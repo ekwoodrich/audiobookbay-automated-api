@@ -1,7 +1,7 @@
 
 # AudiobookBay Automated
 
-AudiobookBay Automated is a lightweight web application designed to simplify audiobook management. It allows users to search [**AudioBook Bay**](https://audiobookbay.lu/) for audiobooks and send magnet links directly to a designated **Deludge, qBittorrent or Transmission** client.
+AudiobookBay Automated is a lightweight web application designed to simplify audiobook management. It allows users to search [**AudioBook Bay**](https://audiobookbayexample.xyz/) for audiobooks and send magnet links directly to a designated **Deludge, qBittorrent or Transmission** client.
 
 ---
 
@@ -59,7 +59,7 @@ python3 test-api.py "test"
 
 ### Production Mode (Real AudiobookBay)
 
-⚠️ **Warning:** Connects to real audiobookbay.lu - rate limits apply!
+⚠️ **Warning:** Connects to real audiobookbayexample.xyz - rate limits apply!
 
 ```bash
 ./start-prod.sh
@@ -90,7 +90,7 @@ GET /api/search?q={query}
   "results": [
     {
       "title": "Book Title",
-      "link": "https://audiobookbay.lu/audio-books/...",
+      "link": "https://audiobookbayexample.xyz/audio-books/...",
       "cover": "https://example.com/cover.jpg",
       "language": "English",
       "post_date": "15 Jan 2025",
@@ -140,7 +140,7 @@ POST /api/download
 **Request Body:**
 ```json
 {
-  "link": "https://audiobookbay.lu/audio-books/...",
+  "link": "https://audiobookbayexample.xyz/audio-books/...",
   "title": "Book Title"
 }
 ```
@@ -296,7 +296,7 @@ NAV_LINK_URL=https://audiobooks.yourdomain.com/
     
     # AudiobookBar Hostname
     ABB_HOSTNAME='audiobookbay.is' #Default
-    # ABB_HOSTNAME='audiobookbay.lu' #Alternative
+    # ABB_HOSTNAME='audiobookbayexample.xyz' #Alternative
 
     PAGE_LIMIT=5 #Default
     FLASK_PORT=5078 #Default
