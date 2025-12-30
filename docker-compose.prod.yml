@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # Main AudiobookBay Downloader (production mode - connects to real audiobookbay.lu)
+  audiobookbay-automated:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: audiobookbay-automated
+    ports:
+      - "5078:5078"
+    env_file:
+      - .env
+    environment:
+      # Ensure production mode (can be overridden by .env)
+      - ABB_MOCK_MODE=false
+      - ABB_SCHEME=https
+    volumes:
+      - ./debug:/app/debug
+    restart: unless-stopped

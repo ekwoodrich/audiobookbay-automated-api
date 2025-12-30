@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Torrent Status{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/status.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="title-container">
+    <h1>Torrent Status</h1>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Progress</th>
+            <th>State</th>
+            <th>Size</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for torrent in torrents %}
+        <tr>
+            <td>{{ torrent.name }}</td>
+            <td>{{ torrent.progress }}%</td>
+            <td>{{ torrent.state }}</td>
+            <td>{{ torrent.size }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="title-container" style="margin-top: 2rem;">
+    <h1>Connection Status</h1>
+</div>
+<table>
+    <tbody>
+        <tr>
+            <th colspan="2">AudiobookBay Configuration</th>
+        </tr>
+        <tr>
+            <td><strong>AudiobookBay URL</strong></td>
+            <td>{{ config.abb_url }}</td>
+        </tr>
+        <tr>
+            <td><strong>Hostname</strong></td>
+            <td>{{ config.abb_hostname }}</td>
+        </tr>
+        <tr>
+            <td><strong>Scheme</strong></td>
+            <td>{{ config.abb_scheme }}</td>
+        </tr>
+        <tr>
+            <td><strong>Mock Mode</strong></td>
+            <td>{{ 'Enabled' if config.mock_mode else 'Disabled' }}</td>
+        </tr>
+        <tr>
+            <td><strong>Page Limit</strong></td>
+            <td>{{ config.page_limit }}</td>
+        </tr>
+        <tr>
+            <td><strong>Debug Mode</strong></td>
+            <td>{{ 'Enabled' if config.debug_mode else 'Disabled' }}</td>
+        </tr>
+        <tr>
+            <th colspan="2">Download Client Configuration</th>
+        </tr>
+        <tr>
+            <td><strong>Client Type</strong></td>
+            <td>{{ config.dl_client or 'Not configured' }}</td>
+        </tr>
+        {% if config.dl_url %}
+        <tr>
+            <td><strong>Client URL</strong></td>
+            <td>{{ config.dl_url }}</td>
+        </tr>
+        {% endif %}
+        {% if config.dl_username %}
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>{{ config.dl_username }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>{{ config.dl_password_display }}</td>
+        </tr>
+        {% if config.dl_category %}
+        <tr>
+            <td><strong>Category/Label</strong></td>
+            <td>{{ config.dl_category }}</td>
+        </tr>
+        {% endif %}
+        {% if config.save_path %}
+        <tr>
+            <td><strong>Save Path</strong></td>
+            <td>{{ config.save_path }}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,17 @@
+# Dockerfile for Mock AudiobookBay Server
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Copy mock server and data
+COPY /app/mock_abb.py /app/
+COPY /app/mock_data /app/mock_data
+
+# Install Flask
+RUN pip install --no-cache-dir flask
+
+# Expose mock server port
+EXPOSE 9999
+
+# Run mock server
+CMD ["python", "-u", "mock_abb.py", "--port", "9999", "--host", "0.0.0.0"]

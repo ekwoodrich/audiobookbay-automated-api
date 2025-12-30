@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Mock AudiobookBay Server
+  mock-abb:
+    build:
+      context: .
+      dockerfile: Dockerfile.mock
+    container_name: mock-audiobookbay
+    ports:
+      - "9999:9999"
+    networks:
+      - abb-network
+    restart: unless-stopped
+
+  # Main AudiobookBay Downloader (configured to use mock)
+  audiobookbay-automated:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: audiobookbay-automated
+    ports:
+      - "5078:5078"
+    env_file:
+      - .env
+    environment:
+      # Override these to use mock server
+      - ABB_MOCK_MODE=true
+      - ABB_HOSTNAME=mock-abb:9999
+      - ABB_SCHEME=http
+    volumes:
+      - ./debug:/app/debug
+    networks:
+      - abb-network
+    depends_on:
+      - mock-abb
+    restart: unless-stopped
+
+networks:
+  abb-network:
+    driver: bridge
