@@ -10,7 +10,7 @@ AudiobookBay Automated is a lightweight web application designed to simplify aud
 This is a fork of [JamesRy96/audiobookbay-automated](https://github.com/JamesRy96/audiobookbay-automated) with the following enhancements:
 
 - **Connection Status UI**: Added a dedicated section in the status page displaying AudiobookBay and Download Client configuration details, including hostname, credentials (with obfuscated passwords), and connection settings
-- **Enhanced Security**: Improved `.gitignore` to protect all `.env` files and sensitive data from being committed to version control
+- **Mock Server**: Built-in mock AudiobookBay server for development and testing without hitting rate limits or needing internet access
 - **Better Configuration Management**: Support for multiple environment configurations (.env.mock, .env.prod) to easily switch between development and production modes
 
 All credit for the original application and core features goes to the original author.
