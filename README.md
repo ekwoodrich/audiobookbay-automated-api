@@ -3,6 +3,20 @@
 
 AudiobookBay Automated is a lightweight web application designed to simplify audiobook management. It allows users to search [**AudioBook Bay**](https://audiobookbay.lu/) for audiobooks and send magnet links directly to a designated **Deludge, qBittorrent or Transmission** client.
 
+---
+
+## About This Fork
+
+This is a fork of [JamesRy96/audiobookbay-automated](https://github.com/JamesRy96/audiobookbay-automated) with the following enhancements:
+
+- **Connection Status UI**: Added a dedicated section in the status page displaying AudiobookBay and Download Client configuration details, including hostname, credentials (with obfuscated passwords), and connection settings
+- **Enhanced Security**: Improved `.gitignore` to protect all `.env` files and sensitive data from being committed to version control
+- **Better Configuration Management**: Support for multiple environment configurations (.env.mock, .env.prod) to easily switch between development and production modes
+
+All credit for the original application and core features goes to the original author.
+
+---
+
 ## How It Works
 - **Search Results**: Users search for audiobooks. The app grabs results from AudioBook Bay and displays results with the **title** and **cover image**, along with two action links:
   1. **More Details**: Opens the audiobook's page on AudioBook Bay for additional information.
